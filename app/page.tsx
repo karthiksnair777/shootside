@@ -88,17 +88,17 @@ export default function Home() {
     message: "",
   });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  setFormData({ ...formData, [e.target.name]: e.target.value });
+};
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // For now, just log the data. You can integrate with email API or backend later.
-    console.log("Form submitted:", formData);
-    alert("Thank you! Your message has been sent.");
-    setFormData({ name: "", email: "", message: "" });
-  };
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  console.log("Form submitted:", formData);
+  alert("Thank you! Your message has been sent.");
+  setFormData({ name: "", email: "", message: "" });
+};
+
 
   return (
     <main className="relative min-h-screen bg-black text-white overflow-x-hidden">
