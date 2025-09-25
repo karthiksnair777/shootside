@@ -22,64 +22,18 @@ export default function Home() {
   const projects = [
   {
     title: "Branding Services",
-    description: [
-      "Logo & Brand Identity",
-      "Print Design (Brochures, etc.)",
-      "Social Media Kits",
-      "Stationery & Merchandise",
-      "Google Business Optimization",
-    ],
+    description: "Logo & Brand Identity, Print Design (Brochures, etc.), Social Media Kits, Stationery & Merchandise, Google Business Optimization",
     link: "#contact",
   },
   {
     title: "Mobile App Development",
-    description: [
-      "iOS & Android App Development",
-      "UI/UX Design",
-      "App Store Deployment",
-      "Maintenance & Updates",
-    ],
+    description: "iOS & Android App Development, UI/UX Design, App Store Deployment, Maintenance & Updates",
     link: "#m",
   },
   {
     title: "Marketing Services",
-    description: [
-      "Social Media Marketing",
-      "Search Engine Optimization (SEO)",
-      "Paid Ads (Google, Facebook, Instagram)",
-      "Campaign Strategy & Analytics",
-    ],
+    description: "Social Media Marketing, Search Engine Optimization (SEO), Paid Ads (Google, Facebook, Instagram), Campaign Strategy & Analytics",
     link: "#contat",
-  },
-  {
-    title: "Website Development",
-    description: [
-      "Responsive Websites",
-      "CMS Integration",
-      "Custom Web Applications",
-      "Performance Optimization & Security",
-    ],
-    link: "#cotact",
-  },
-  {
-    title: "E-Commerce Solutions",
-    description: [
-      "Online Store Setup",
-      "Payment Gateway Integration",
-      "Inventory & Order Management",
-      "Multi-platform Support",
-    ],
-    link: "#cntact",
-  },
-  {
-    title: "Content Creation",
-    description: [
-      "Photography & Videography",
-      "Graphic Design",
-      "Copywriting & Blogs",
-      "Social Media Content Strategy",
-    ],
-    link: "#ontact",
   },
 ];
   const [formData, setFormData] = useState({
