@@ -4,7 +4,7 @@ import { AuroraBackground } from "@/components/ui/aurora-background";
 import { motion } from "motion/react";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
-
+import Image from "next/image";
 
 import { useState, useEffect } from "react";
 
@@ -22,64 +22,18 @@ export default function Home() {
   const projects = [
   {
     title: "Branding Services",
-    description: [
-      "Logo & Brand Identity",
-      "Print Design (Brochures, etc.)",
-      "Social Media Kits",
-      "Stationery & Merchandise",
-      "Google Business Optimization",
-    ],
+    description: "Logo & Brand Identity, Print Design (Brochures, etc.), Social Media Kits, Stationery & Merchandise, Google Business Optimization",
     link: "#contact",
   },
   {
     title: "Mobile App Development",
-    description: [
-      "iOS & Android App Development",
-      "UI/UX Design",
-      "App Store Deployment",
-      "Maintenance & Updates",
-    ],
+    description: "iOS & Android App Development, UI/UX Design, App Store Deployment, Maintenance & Updates",
     link: "#m",
   },
   {
     title: "Marketing Services",
-    description: [
-      "Social Media Marketing",
-      "Search Engine Optimization (SEO)",
-      "Paid Ads (Google, Facebook, Instagram)",
-      "Campaign Strategy & Analytics",
-    ],
+    description: "Social Media Marketing, Search Engine Optimization (SEO), Paid Ads (Google, Facebook, Instagram), Campaign Strategy & Analytics",
     link: "#contat",
-  },
-  {
-    title: "Website Development",
-    description: [
-      "Responsive Websites",
-      "CMS Integration",
-      "Custom Web Applications",
-      "Performance Optimization & Security",
-    ],
-    link: "#cotact",
-  },
-  {
-    title: "E-Commerce Solutions",
-    description: [
-      "Online Store Setup",
-      "Payment Gateway Integration",
-      "Inventory & Order Management",
-      "Multi-platform Support",
-    ],
-    link: "#cntact",
-  },
-  {
-    title: "Content Creation",
-    description: [
-      "Photography & Videography",
-      "Graphic Design",
-      "Copywriting & Blogs",
-      "Social Media Content Strategy",
-    ],
-    link: "#ontact",
   },
 ];
   const [formData, setFormData] = useState({
@@ -88,17 +42,17 @@ export default function Home() {
     message: "",
   });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  setFormData({ ...formData, [e.target.name]: e.target.value });
+};
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // For now, just log the data. You can integrate with email API or backend later.
-    console.log("Form submitted:", formData);
-    alert("Thank you! Your message has been sent.");
-    setFormData({ name: "", email: "", message: "" });
-  };
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  console.log("Form submitted:", formData);
+  alert("Thank you! Your message has been sent.");
+  setFormData({ name: "", email: "", message: "" });
+};
+
 
   return (
     <main className="relative min-h-screen bg-black text-white overflow-x-hidden">
@@ -209,11 +163,13 @@ export default function Home() {
           key={`${loopIdx}-${src}-${idx}`}
           className="h-20 w-32 flex items-center justify-center" // ✅ uniform box
         >
-          <img
-            src={src}
-            alt={`Client ${idx + 1}`}
-            className="h-full w-full object-contain opacity-80 hover:opacity-100 grayscale hover:grayscale-0 transition"
-          />
+          <Image
+  src={src}
+  alt={`Client ${idx + 1}`}
+  width={128}
+  height={80}
+  className="h-full w-full object-contain opacity-80 hover:opacity-100 grayscale hover:grayscale-0 transition"
+/>
         </div>
       ))
     )}
@@ -286,9 +242,9 @@ export default function Home() {
           Let's Collaborate
         </h2>
         <p className="text-white/70 text-lg md:text-xl">
-          Got a project or idea? We'd love to hear from you. Fill out the form
-          below and let's create something amazing together!
-        </p>
+  Got a project or idea? We&apos;d love to hear from you. Fill out the form
+  below and let&apos;s create something amazing together!
+</p>
       </div>
 
       <form
@@ -341,7 +297,6 @@ export default function Home() {
 </footer>
 
   </main>
-
 
 
   );
