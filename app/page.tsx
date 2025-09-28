@@ -6,6 +6,7 @@ import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-w
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import Image from "next/image";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 
 
 import { useState, useEffect } from "react";
@@ -122,14 +123,15 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
       {/* CTA Button */}
     <div className="mt-6">
-    <a
-      href="#contact"
-      className="inline-block px-4 py-3 text-white font-bold text-lg rounded-xl border-1 border-purple-500 
-                hover:bg-purple-500 hover:text-black transition-all duration-300 ease-in-out"
-    >
-      Contact Us
-    </a>
-  </div>
+  <a
+    href="tel:+917306166866" // Direct call link
+    className="inline-block px-4 py-3 text-white font-bold text-lg rounded-xl border border-purple-500 
+               hover:bg-purple-500 hover:text-black transition-all duration-300 ease-in-out"
+  >
+    Contact Us
+  </a>
+</div>
+
 
     </motion.div>
 
@@ -150,8 +152,8 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
           </h2>
 
           {/* Stronger Gradient Overlays (shades on each side) */}
-          <div className="absolute left-0 top-0 h-full w-48 bg-gradient-to-r from-black via-black/80 to-transparent pointer-events-none z-10"></div>
-          <div className="absolute right-0 top-0 h-full w-48 bg-gradient-to-l from-black via-black/80 to-transparent pointer-events-none z-10"></div>
+          <div className="absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-black via-black/30 to-transparent pointer-events-none z-10"></div>
+          <div className="absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-black via-black/30 to-transparent pointer-events-none z-10"></div>
 
           {/* Infinite Scroll Carousel */}
        <div className="relative w-full overflow-hidden">
@@ -380,6 +382,17 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     </footer>
 
         
+
+{/* Floating WhatsApp Button */}
+<a
+  href="https://wa.me/917306166866" // Replace with your WhatsApp number including country code
+  target="_blank"
+  rel="noopener noreferrer"
+  className="fixed bottom-6 right-6 w-16 h-16 bg-purple-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-lg z-50 transition transform hover:scale-110"
+>
+  <FaWhatsapp className="w-8 h-8 text-white" />
+</a>
+
 
 
   </main>
