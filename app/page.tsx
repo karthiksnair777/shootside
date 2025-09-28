@@ -6,6 +6,7 @@ import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-w
 import Image from "next/image";
 import { FaWhatsapp, FaBars, FaTimes } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -29,12 +30,37 @@ export default function Home() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  try {
+    const { data, error } = await supabase
+      .from("contacts") // your table name
+      .insert([
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+      ]);
+
+    if (error) {
+      console.error("Supabase insert error:", error);
+      alert("Something went wrong. Please try again later.");
+      return;
+    }
+
+    console.log("Form submitted:", data);
     alert("Thank you! Your message has been sent.");
+
     setFormData({ name: "", email: "", message: "" });
-  };
+  } catch (err) {
+    console.error("Unexpected error:", err);
+    alert("Something went wrong. Please try again later.");
+  }
+};
+
+
 
   return (
     <main className="relative min-h-screen bg-black text-white overflow-x-hidden">
@@ -61,7 +87,7 @@ export default function Home() {
 
         {/* Contact Us button for desktop */}
         <a
-          href="#contact"
+          href="tel:+917306166866"
           className="hidden md:inline-block px-4 py-2 rounded-lg hover:bg-purple-600 transition text-sm font-semibold text-white"
         >
           Contact Us

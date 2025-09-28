@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-  "dev": "next dev --turbopack",
-  "build": "next build --turbopack",
-  "start": "next start",
-  "lint": "eslint",
-  "export": "next build && next export"
-},
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
+    "start": "next start",
+    "lint": "eslint",
+    "export": "next build && next export"
+  },
   "dependencies": {
+    "@supabase/supabase-js": "^2.58.0",
     "@tabler/icons-react": "^3.35.0",
     "@tailwindcss/cli": "^4.1.13",
     "@tailwindcss/postcss": "^4.1.13",
