@@ -5,6 +5,8 @@ import { motion } from "motion/react";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import Image from "next/image";
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+
 
 import { useState, useEffect } from "react";
 
@@ -35,7 +37,23 @@ export default function Home() {
     description: "Social Media Marketing, Search Engine Optimization (SEO), Paid Ads (Google, Facebook, Instagram), Campaign Strategy & Analytics",
     link: "#contat",
   },
+  {
+    title: "Web Development",
+    description: "Responsive Website Design, E-commerce Platforms, CMS Integration, Website Maintenance & Optimization",
+    link: "#web",
+  },
+  {
+    title: "Content Creation",
+    description: "Video Production, Photography, Copywriting, Blog & Article Writing, Social Media Content Planning",
+    link: "#content",
+  },
+  {
+    title: "Consulting & Strategy",
+    description: "Business Strategy, Brand Positioning, Digital Transformation, Market Research, Customer Journey Mapping",
+    link: "#strategy",
+  },
 ];
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -57,7 +75,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   return (
     <main className="relative min-h-screen bg-black text-white overflow-x-hidden">
       {/* Floating Glass Header */}
-      <header
+      <header 
         className={`fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl z-50 rounded-2xl px-6 py-3 flex items-center justify-between backdrop-blur-md border border-white/10 shadow-lg transition-all duration-300 ${scrolled ? "bg-white/10" : "bg-white/5"
           }`}
       >
@@ -77,50 +95,50 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
           Get Started
         </button>
       </header>
-     <AuroraBackground>
-  <motion.div
-    initial={{ opacity: 0.0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{
-      delay: 0.3,
-      duration: 0.8,
-      ease: "easeInOut",
-    }}
-    className="absolute left-8 md:left-16 top-1/2 transform -translate-y-1/2 flex flex-col gap-6 max-w-md md:max-w-lg"
-  >
-    {/* Main Heading */}
-    <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-white leading-tight">
-      SHOOTSIDE
-    </h1>
+      <AuroraBackground>
+    <motion.div
+      initial={{ opacity: 0.0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        delay: 0.3,
+        duration: 0.8,
+        ease: "easeInOut",
+      }}
+      className="absolute left-8 md:left-16 top-1/2 transform -translate-y-1/2 flex flex-col gap-6 max-w-md md:max-w-lg"
+    >
+      {/* Main Heading */}
+      <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-white leading-tight">
+        SHOOTSIDE
+      </h1>
 
-    {/* Subheading / Rotating Words */}
-    <div className="mt-4">
-      <LayoutTextFlip
-        text="We are a"
-        words={["Media Agency", "Video Production", "Web Development", "Branding"]}
-        
-      />
-    </div>
+      {/* Subheading / Rotating Words */}
+      <div className="mt-4">
+        <LayoutTextFlip
+          text="We are a"
+          words={["Media Agency", "Video Production", "Web Development", "Branding"]}
+          
+        />
+      </div>
 
-    {/* CTA Button */}
-   <div className="mt-6">
-  <a
-    href="#contact"
-    className="inline-block px-4 py-3 text-white font-bold text-lg rounded-xl border-1 border-purple-500 
-               hover:bg-purple-500 hover:text-black transition-all duration-300 ease-in-out"
-  >
-    Contact Us
-  </a>
-</div>
-
-  </motion.div>
-
-  {/* Optional: Decorative Shapes / Background Effects */}
-  <div className="absolute inset-0 pointer-events-none">
-    <div className="absolute -top-16 -left-16 w-72 h-72 bg-purple-600 rounded-full opacity-30 blur-3xl animate-pulse"></div>
-    <div className="absolute -bottom-16 -right-16 w-96 h-96 bg-purple-500 rounded-full opacity-20 blur-3xl animate-pulse"></div>
+      {/* CTA Button */}
+    <div className="mt-6">
+    <a
+      href="#contact"
+      className="inline-block px-4 py-3 text-white font-bold text-lg rounded-xl border-1 border-purple-500 
+                hover:bg-purple-500 hover:text-black transition-all duration-300 ease-in-out"
+    >
+      Contact Us
+    </a>
   </div>
-</AuroraBackground>
+
+    </motion.div>
+
+    {/* Optional: Decorative Shapes / Background Effects */}
+    <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute -top-16 -left-16 w-72 h-72 bg-purple-600 rounded-full opacity-30 blur-3xl animate-pulse"></div>
+      <div className="absolute -bottom-16 -right-16 w-96 h-96 bg-purple-500 rounded-full opacity-20 blur-3xl animate-pulse"></div>
+    </div>
+  </AuroraBackground>
 
       {/* next */}
       
@@ -222,79 +240,147 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   </div>
 </BackgroundBeamsWithCollision>
 
-      {/* next */}
-      {/* Hover Effect Cards Section */}
-      <section id="services" className="py-16 bg-grey-200 text-purple-500">
-  <div className="max-w-6xl mx-auto px-4 sm:px-8">
-    <h1 className="text-3xl md:text-4xl font-bold text-center">
-      Our Services
-    </h1>
-     <div className="max-w-5xl mx-auto px-8 font-sans">
-      <HoverEffect items={projects} />
-    </div>
-  </div>
-  <p className="text-center ">click on the card to know more.</p>
-</section>
 
-<section className="relative bg-black py-20 px-6">
-      <div className="max-w-5xl mx-auto text-center mb-12">
-        <h2 className="text-5xl md:text-6xl font-extrabold text-white mb-4">
-          Let's Collaborate
-        </h2>
-        <p className="text-white/70 text-lg md:text-xl">
-  Got a project or idea? We&apos;d love to hear from you. Fill out the form
-  below and let&apos;s create something amazing together!
+<section className="relative bg-black py-24 px-6">
+  {/* Heading */}
+  <div className="max-w-5xl mx-auto text-center mb-16">
+    <h2 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-700 mb-4 animate-gradient-x">
+      Let's Collaborate
+    </h2>
+ <p className="text-white/70 text-base md:text-base max-w-2xl mx-auto">
+  Got a project or idea? We'd love to hear from you. Fill out the form below and let's create something amazing together!
 </p>
-      </div>
 
-      <form
-        onSubmit={handleSubmit}
-        className="max-w-3xl mx-auto bg-black/50 border border-white/10 rounded-3xl p-8 shadow-lg"
-      >
-        <div className="grid gap-6 md:grid-cols-2">
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="p-4 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="p-4 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-          />
-        </div>
+  </div>
 
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          value={formData.message}
+  {/* Form */}
+  <form
+    onSubmit={handleSubmit}
+    className="max-w-3xl mx-auto bg-purple-900/30 backdrop-blur-md border border-purple-700/40 rounded-3xl p-10 shadow-2xl hover:shadow-purple-700/50 transition-shadow duration-500"
+  >
+    <div className="grid gap-6 md:grid-cols-2">
+      {/* Floating Label Input */}
+      <div className="relative">
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          value={formData.name}
           onChange={handleChange}
           required
-          rows={6}
-          className="w-full mt-6 p-4 rounded-2xl bg-white/10 text-white placeholder-white/50 border border-white/20 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+          className="peer p-5 rounded-xl bg-purple-800/50 text-white placeholder-transparent border border-purple-600/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 w-full transition"
         />
+        <label className="absolute left-5 top-5 text-purple-200/70 text-sm md:text-base transition-all duration-300 peer-placeholder-shown:top-5 peer-placeholder-shown:text-purple-400/50 peer-placeholder-shown:text-base peer-focus:-top-2 peer-focus:text-purple-300 peer-focus:text-sm">
+          Your Name
+        </label>
+      </div>
 
-        <button
-          type="submit"
-          className="mt-6 w-full bg-gradient-to-r from-purple-600 to-blue-500 text-white font-semibold py-3 rounded-xl hover:scale-105 transform transition-all duration-300"
-        >
-          Send Message
-        </button>
-      </form>
-    </section>
+      <div className="relative">
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          className="peer p-5 rounded-xl bg-purple-800/50 text-white placeholder-transparent border border-purple-600/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 w-full transition"
+        />
+        <label className="absolute left-5 top-5 text-purple-200/70 text-sm md:text-base transition-all duration-300 peer-placeholder-shown:top-5 peer-placeholder-shown:text-purple-400/50 peer-placeholder-shown:text-base peer-focus:-top-2 peer-focus:text-purple-300 peer-focus:text-sm">
+          Your Email
+        </label>
+      </div>
+    </div>
 
-    <footer className="py-12 bg-black text-white text-center">
-  <h2 className="text-4xl md:text-5xl font-extrabold mb-4">ShootSide</h2>
-  <p className="text-white/70 text-base md:text-lg">Your partner in creativity and innovation.</p>
-</footer>
+    {/* Textarea with Floating Label */}
+    <div className="relative mt-6">
+      <textarea
+        name="message"
+        placeholder="Your Message"
+        value={formData.message}
+        onChange={handleChange}
+        required
+        rows={6}
+        className="peer w-full p-5 rounded-2xl bg-purple-800/50 text-white placeholder-transparent border border-purple-600/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition"
+      />
+      <label className="absolute left-5 top-5 text-purple-200/70 text-sm md:text-base transition-all duration-300 peer-placeholder-shown:top-5 peer-placeholder-shown:text-purple-400/50 peer-placeholder-shown:text-base peer-focus:-top-2 peer-focus:text-purple-300 peer-focus:text-sm">
+        Your Message
+      </label>
+    </div>
+
+    {/* Submit Button */}
+    <button
+      type="submit"
+      className="mt-8 w-full bg-gradient-to-r from-purple-500 to-purple-700 text-white font-semibold py-4 rounded-xl hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-purple-600/50"
+    >
+      Send Message
+    </button>
+  </form>
+
+  {/* Subtle Purple Background Glows */}
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute bottom-0 right-1/3 w-[600px] h-[600px] bg-purple-500/20 rounded-full filter blur-2xl animate-pulse-slow"></div>
+  </div>
+</section>
+
+
+
+      {/* Footer */}
+
+  <footer className="bg-purple-800 text-white rounded-3xl py-12 mt-16">
+      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8">
+        {/* Left Section */}
+        <div>
+          <h2 className="text-3xl font-bold mb-4">Drop us a line</h2>
+          <form className="flex flex-col sm:flex-row gap-3">
+            <input
+              type="email"
+              placeholder="Your email"
+              className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/60 text-sm focus:outline-none focus:ring-1 focus:ring-white/40 w-full sm:w-auto flex-1"
+            />
+            <button
+              type="submit"
+              className="px-6 py-2 rounded-full bg-white/20 hover:bg-white/30 transition text-sm font-medium"
+            >
+              Contact
+            </button>
+          </form>
+        </div>
+
+        {/* Right Section */}
+        <div className="flex flex-col text-right justify-between">
+          <p className="text-sm text-white/80 mb-4">
+            Book a meeting or leave a request. We’re ready to 
+            embark on this journey with you. Are you?
+          </p>
+          <div className="flex flex-wrap gap-4 text-xs justify-end">
+            <a href="#" className="hover:text-purple-200">[ INSTAGRAM ]</a>
+            <a href="#" className="hover:text-purple-200">[ FACEBOOK ]</a>
+            <a href="#" className="hover:text-purple-200">[ LINKEDIN ]</a>
+            <a href="#" className="hover:text-purple-200">[ BEHANCE ]</a>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Brand Section */}
+     <div className="mt-16 text-center">
+  <h1 className="text-[12rem] md:text-[16rem] font-extrabold text-white opacity-30 leading-none">
+    SHOOTSIDE
+  </h1>
+</div>
+
+
+      {/* Footer Bottom */}
+      <div className="mt-8 border-t border-white/20 flex flex-col sm:flex-row justify-between items-center px-6 text-xs text-white/70">
+        <p>© 2024. All rights reserved</p>
+        <div className="flex gap-6 mt-2 sm:mt-0">
+          <a href="#" className="hover:text-purple-200">Terms of Service</a>
+          <a href="#" className="hover:text-purple-200">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+
+        
+
 
   </main>
 
