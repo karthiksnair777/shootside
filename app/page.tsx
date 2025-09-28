@@ -3,16 +3,13 @@ import { LayoutTextFlip } from "@/components/ui/layout-text-flip";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { motion } from "motion/react";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
-import { HoverEffect } from "@/components/ui/card-hover-effect";
 import Image from "next/image";
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import { FaWhatsapp } from "react-icons/fa";
-
-
+import { FaWhatsapp, FaBars, FaTimes } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,39 +19,6 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const projects = [
-  {
-    title: "Branding Services",
-    description: "Logo & Brand Identity, Print Design (Brochures, etc.), Social Media Kits, Stationery & Merchandise, Google Business Optimization",
-    link: "#contact",
-  },
-  {
-    title: "Mobile App Development",
-    description: "iOS & Android App Development, UI/UX Design, App Store Deployment, Maintenance & Updates",
-    link: "#m",
-  },
-  {
-    title: "Marketing Services",
-    description: "Social Media Marketing, Search Engine Optimization (SEO), Paid Ads (Google, Facebook, Instagram), Campaign Strategy & Analytics",
-    link: "#contat",
-  },
-  {
-    title: "Web Development",
-    description: "Responsive Website Design, E-commerce Platforms, CMS Integration, Website Maintenance & Optimization",
-    link: "#web",
-  },
-  {
-    title: "Content Creation",
-    description: "Video Production, Photography, Copywriting, Blog & Article Writing, Social Media Content Planning",
-    link: "#content",
-  },
-  {
-    title: "Consulting & Strategy",
-    description: "Business Strategy, Brand Positioning, Digital Transformation, Market Research, Customer Journey Mapping",
-    link: "#strategy",
-  },
-];
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -62,25 +26,27 @@ export default function Home() {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-  setFormData({ ...formData, [e.target.name]: e.target.value });
-};
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  console.log("Form submitted:", formData);
-  alert("Thank you! Your message has been sent.");
-  setFormData({ name: "", email: "", message: "" });
-};
-
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    alert("Thank you! Your message has been sent.");
+    setFormData({ name: "", email: "", message: "" });
+  };
 
   return (
     <main className="relative min-h-screen bg-black text-white overflow-x-hidden">
       {/* Floating Glass Header */}
-      <header 
-        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl z-50 rounded-2xl px-6 py-3 flex items-center justify-between backdrop-blur-md border border-white/10 shadow-lg transition-all duration-300 ${scrolled ? "bg-white/10" : "bg-white/5"
-          }`}
+      <header
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl z-50 rounded-2xl px-6 py-3 flex items-center justify-between backdrop-blur-md border border-white/10 shadow-lg transition-all duration-300 ${
+          scrolled ? "bg-white/10" : "bg-white/5"
+        }`}
       >
         <h1 className="text-2xl font-bold tracking-wide">SHOOTSIDE</h1>
+
+        {/* Desktop nav */}
         <nav className="hidden md:flex gap-8 text-sm font-medium">
           <a href="#features" className="hover:text-purple-400 transition">
             Features
@@ -92,11 +58,46 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
             Contact
           </a>
         </nav>
-        <button className="px-4 py-2 rounded-lg  hover:bg-purple-500 transition text-sm font-semibold">
-          Get Started
+
+        {/* Contact Us button for desktop */}
+        <a
+          href="#contact"
+          className="hidden md:inline-block px-4 py-2 rounded-lg hover:bg-purple-600 transition text-sm font-semibold text-white"
+        >
+          Contact Us
+        </a>
+
+        {/* Hamburger button for mobile */}
+        <button
+          className="md:hidden text-white text-xl"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[90%] bg-black/90 rounded-xl shadow-lg flex flex-col items-center py-4 gap-4 md:hidden">
+            <a href="#features" className="hover:text-purple-400 transition" onClick={() => setMenuOpen(false)}>
+              Features
+            </a>
+            <a href="#about" className="hover:text-purple-400 transition" onClick={() => setMenuOpen(false)}>
+              About
+            </a>
+            <a href="#contact" className="hover:text-purple-400 transition" onClick={() => setMenuOpen(false)}>
+              Contact
+            </a>
+            <a
+              href="#contact"
+              className="px-4 py-2 rounded-lg bg-purple-500 hover:bg-purple-600 transition text-white font-semibold w-full text-center"
+              onClick={() => setMenuOpen(false)}
+            >
+              Contact Us
+            </a>
+          </div>
+        )}
       </header>
-      <AuroraBackground>
+      <AuroraBackground className="h-[500px] md:h-[800px]">
     <motion.div
       initial={{ opacity: 0.0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -198,25 +199,29 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
         </div>
       </section>
+
 {/*  */}
+
  <BackgroundBeamsWithCollision className="text-white">
-  <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+  <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
     {/* Left Side (Image / Illustration) */}
     <motion.div
       initial={{ opacity: 0, x: -40 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="flex justify-center"
+      className="order-1 md:order-1 flex justify-center"
     >
-      <h2 className="text-purple-700 font-bold text-xl md:text-2xl mb-2">
-        The
-      </h2>
-      <h2 className="font-extrabold text-white text-6xl md:text-[10rem] tracking-tight">
-        SHOOT
-        <br />
-        SIDE!!!
-      </h2>
+      <div>
+        <h2 className="text-purple-700 font-bold text-xl md:text-2xl mb-2 text-center md:text-left">
+          The
+        </h2>
+        <h2 className="font-extrabold text-white text-6xl sm:text-7xl md:text-[10rem] tracking-tight text-center md:text-left">
+          SHOOT
+          <br />
+          SIDE!!!
+        </h2>
+      </div>
     </motion.div>
 
     {/* Right Side (Text Content) */}
@@ -225,19 +230,21 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
       viewport={{ once: true }}
-      className="text-center md:text-left"
+      className="order-2 md:order-2 text-center md:text-left"
     >
-      <h2 className="text-2xl md:text-2xl font-bold mb-1 text-purple-700">Who We Are</h2>
-      <h2 className="text-5xl md:text-5xl font-extrabold mb-6 text-white">
-        Empowering Brands Through Strategy, Creativity & Innovation
-      </h2>
+      <div>
+        <h2 className="text-2xl md:text-2xl font-bold mb-1 text-purple-700">Who We Are</h2>
+        <h2 className="text-4xl sm:text-5xl md:text-5xl font-extrabold mb-6 text-white">
+          Empowering Brands Through Strategy, Creativity & Innovation
+        </h2>
 
-      <p className="text-sm md:text-base leading-relaxed max-w-2xl">
-        We are <span className="font-semibold text-purple-700">ShootSide</span>, a creative collective driven by passion, innovation, and purpose. 
-        Our journey began with a simple vision — to craft meaningful experiences that connect brands with people in powerful ways. 
-        With expertise across design, technology, and storytelling, we bring bold ideas to life and transform them into solutions 
-        that inspire, engage, and deliver real impact. At ShootSide, collaboration fuels our creativity, and excellence defines our work.
-      </p>
+        <p className="text-sm md:text-base leading-relaxed max-w-2xl mx-auto md:mx-0">
+          We are <span className="font-semibold text-purple-700">ShootSide</span>, a creative collective driven by passion, innovation, and purpose. 
+          Our journey began with a simple vision — to craft meaningful experiences that connect brands with people in powerful ways. 
+          With expertise across design, technology, and storytelling, we bring bold ideas to life and transform them into solutions 
+          that inspire, engage, and deliver real impact. At ShootSide, collaboration fuels our creativity, and excellence defines our work.
+        </p>
+      </div>
     </motion.div>
   </div>
 </BackgroundBeamsWithCollision>
