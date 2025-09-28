@@ -233,7 +233,7 @@
  
  <div className="relative py-20 bg-black text-white overflow-hidden">
   {/* Background - behind everything */}
-  <BackgroundBeamsWithCollision className="absolute inset-0 w-full h-full -z-10" />
+  {/* <BackgroundBeamsWithCollision className="absolute inset-0 w-full h-full -z-10" /> */}
 
   {/* Content */}
   <div className="relative max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
