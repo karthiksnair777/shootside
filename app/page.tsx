@@ -1,8 +1,9 @@
   "use client";
   import { LayoutTextFlip } from "@/components/ui/layout-text-flip";
   import { AuroraBackground } from "@/components/ui/aurora-background";
+  import { HoverEffect } from "@/components/ui/card-hover-effect";
   import { motion } from "motion/react";
-  import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
+  // import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
   import Image from "next/image";
   import { FaWhatsapp, FaBars, FaTimes } from "react-icons/fa";
   import { useState, useEffect } from "react";
@@ -20,47 +21,84 @@
       return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const [formData, setFormData] = useState({
-      name: "",
-      email: "",
-      message: "",
-    });
+    const projects = [
+  {
+    title: "Branding Services",
+    description:
+      "Logo & Brand Identity, Print Design (Brochures, etc.), Social Media Kits, Stationery & Merchandise, Google Business Optimization",
+    link: "#contact",
+  },
+  {
+    title: "Mobile App Development",
+    description:
+      "iOS & Android App Development, UI/UX Design, App Store Deployment, Maintenance & Updates",
+    link: "#m",
+  },
+  {
+    title: "Marketing Services",
+    description:
+      "Social Media Marketing, Search Engine Optimization (SEO), Paid Ads (Google, Facebook, Instagram), Campaign Strategy & Analytics",
+    link: "#contat",
+  },
+  {
+    title: "Web Development",
+    description:
+      "Custom Websites, E-Commerce Solutions, CMS (WordPress, Shopify), Web App Development, Performance Optimization",
+    link: "#web",
+  },
+  {
+    title: "Content Creation",
+    description:
+      "Photography & Videography, social media content creation, event coverage, Creative Campaign Content",
+    link: "#content",
+  },
+  {
+    title: "IT Consulting & Support",
+    description:
+      "Technology Strategy, Cloud Solutions, Cybersecurity, Software Integration, Ongoing Technical Support",
+    link: "#it",
+  },
+];
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    
+const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  message: "",
+});
 
-    try {
-      const { data, error } = await supabase
-        .from("contacts") // your table name
-        .insert([
-          {
-            name: formData.name,
-            email: formData.email,
-            message: formData.message,
-          },
-        ]);
+const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  setFormData({ ...formData, [e.target.name]: e.target.value });
+};
 
-      if (error) {
-        console.error("Supabase insert error:", error);
-        alert("Something went wrong. Please try again later.");
-        return;
-      }
+   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
 
-      console.log("Form submitted:", data);
-      alert("Thank you! Your message has been sent.");
+  // Insert into Supabase
+  const { data, error } = await supabase
+    .from("contacts") // your table name
+    .insert([
+      {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      },
+    ])
+    .select(); // optional: returns the inserted row
 
-      setFormData({ name: "", email: "", message: "" });
-    } catch (err) {
-      console.error("Unexpected error:", err);
-      alert("Something went wrong. Please try again later.");
-    }
-  };
+  if (error) {
+    console.error("Supabase insert error:", error);
+    alert("Something went wrong. Please try again later.");
+    return;
+  }
 
+  console.log("Form submitted:", data);
+  alert("Thank you! Your message has been sent.");
 
+  // Clear the form
+  setFormData({ name: "", email: "", message: "" });
+};
 
 
     return (
@@ -275,6 +313,30 @@
 
   </div>
 </div>
+<section id="services" className="py-20 bg-gray-200 text-gray-900">
+  <div className="max-w-7xl mx-auto px-6 sm:px-12">
+    {/* Title */}
+    <div className="text-center mb-12">
+      <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-purple-700">
+        Our Services
+      </h1>
+      <p className="mt-4 text-2xl  md:text-sm text-gray-600 max-w-2xl mx-auto">
+        We provide a wide range of services designed to bring value, innovation, and growth to your business.
+      </p>
+    </div>
+
+    {/* Cards */}
+    <div className="max-w-6xl mx-auto">
+      <HoverEffect items={projects} />
+    </div>
+
+    {/* Footer note */}
+    <p className="mt-10 text-center text-base md:text-lg text-gray-500">
+      Click on a card to learn more about each service.
+    </p>
+  </div>
+</section>
+
 
 
 
@@ -325,6 +387,7 @@
   </div>
 </section>
 
+  
   <section className="relative bg-black py-24 px-6">
     {/* Heading */}
     <div className="max-w-5xl mx-auto text-center mb-16">
